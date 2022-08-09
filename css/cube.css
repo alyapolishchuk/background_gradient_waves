@@ -1,0 +1,131 @@
+/*Variebles to each cube :)*/
+:root {
+  --cube1-bottom: 5%;
+  --cube2-bottom: 10%;
+  --cube3-bottom: 15%;
+  --cube4-bottom: 20%;
+  --cube5-bottom: 25%;
+
+  --cube: 0%;
+  --cube-num: 0;
+}
+
+body {
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/*The content div of all the cubes*/
+.content-animation {
+  width: 100vw;
+  height: 100vh;
+}
+
+/*The basic style of a cube*/
+.cube {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 0.5em;
+  animation: cubeMovement 5s ease-in 0s infinite;
+  position: fixed;
+  left: 1em;
+  bottom: var(--cube);
+  transition: ease;
+}
+
+/*And here I define the property of each cube: cube 1; cube 2; ...*/
+.cube:nth-child(1) {
+  height: 2em;
+  width: 2em;
+  --cube: var(--cube1-bottom);
+  --cube-num: 10%;
+}
+
+.cube:nth-child(2) {
+  height: 4em;
+  width: 4em;
+  --cube: var(--cube2-bottom);
+  --cube-num: 20%;
+}
+
+.cube:nth-child(3) {
+  height: 6em;
+  width: 6em;
+  --cube: var(--cube3-bottom);
+  --cube-num: 30%;
+}
+
+.cube:nth-child(4) {
+  height: 8em;
+  width: 8em;
+  --cube: var(--cube4-bottom);
+  --cube-num: 40%;
+}
+
+.cube:nth-child(5) {
+  height: 10em;
+  width: 10em;
+  --cube: var(--cube5-bottom);
+  --cube-num: 50%;
+}
+
+/*And here is the animation of each cube.
+As you can see, I use the varieble --cube and --cube-num to affect in the same way to all the cubes :)*/
+@keyframes cubeMovement {
+  0% {
+    transform: translateX(0vw) rotate(90deg);
+    opacity: 0;
+    bottom: var(--cube);
+    background: rgb(255 255 255 / 25%);
+  }
+  20% {
+    opacity: 1;
+    bottom: calc(var(--cube) + calc(var(--cube-num)));
+    background: rgb(255 255 255 / 25%);
+  }
+  40% {
+    opacity: 1;
+    bottom: calc(var(--cube) + calc(90% - var(--cube-num)));
+    background: rgb(200 80 192 / 25%);
+  }
+  70% {
+    opacity: 1;
+    bottom: calc(var(--cube) + calc(40% - var(--cube-num)));
+    background: rgb(255 255 255 / 25%);
+  }
+  100% {
+    transform: translateX(100vw) rotate(360deg);
+    opacity: 0;
+    bottom: var(--cube);
+    background: rgb(255 255 255 / 25%);
+  }
+}
+a {
+  display: block;
+  width: 100px;
+  padding: 10px;
+  background-color: #fff;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  margin: 10px auto;
+  font-weight: 700;
+}
